@@ -22,7 +22,7 @@ export default class extends React.Component {
             },
             history: { push },
         } = this.props;
-        const {isMovie} = this.state;
+        const { isMovie } = this.state;
         const parsedId = parseInt(id);
         if (isNaN(parsedId)) {
             return push("/");
@@ -30,15 +30,15 @@ export default class extends React.Component {
         let result;
         try {
             if (isMovie) {
-                ({data: result} = await moviesApi.movieDetail(parsedId));
+                ({ data: result } = await moviesApi.movieDetail(parsedId));
             } else {
-                ({data: result} = await tvApi.showDetail(parsedId));
+                ({ data: result } = await tvApi.showDetail(parsedId));
             }
             console.log(result);
         } catch {
-            this.setState({error: "Can't find anything."});
+            this.setState({ error: "Can't find anything." });
         } finally {
-            this.setState({loading: false, result});
+            this.setState({ loading: false, result });
         }
     }
 

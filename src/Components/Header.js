@@ -35,7 +35,7 @@ const SLink = styled(Link)`
 	justify-content: center;
 `;
 
-export default withRouter(({location: {pathname}}) => (
+export default withRouter(({ location: { pathname } }) => (
 	<Header>
 		<List>
 			<Item current={pathname === "/"}>
