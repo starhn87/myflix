@@ -4,12 +4,13 @@ import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import Message from "../../Components/Message";
 import Helmet from "react-helmet";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
-    width: 100%;
-    height: calc(100vh - 50px);
     position: relative;
     padding: 50px;
+    width: 100%;
+    height: calc(100vh - 50px);
 `;
 
 const Backdrop = styled.div`
@@ -27,10 +28,10 @@ const Backdrop = styled.div`
 `;
 
 const Content = styled.div`
+    position: relative;
     display: flex;
     width: 100%;
     height: 100%;
-    position: relative;
     z-index: 1;
 `;
 
@@ -49,11 +50,13 @@ const Data = styled.div`
 `;
 
 const Title = styled.h3`
+    float: left;
     font-size: 32px;
 `;
 
 const ItemContainer = styled.div`
     margin: 20px 0;
+    padding-top: 15px;
 `;
 
 const Item = styled.span``;
@@ -63,10 +66,14 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
+    width: 50%;
+    line-height: 1.5;
     font-size: 12px;
     opacity: 0.7;
-    line-height: 1.5;
-    width: 50%;
+`;
+
+const ILink = styled.a`
+
 `;
 
 const DetailPresenter = ({
@@ -94,6 +101,9 @@ const DetailPresenter = ({
                     <Cover bgImage={result.poster_path ? `https://image.tmdb.org/t/p/original${result.poster_path}` : require("../../assets/noPosterSmall.png")} />
                     <Data>
                         <Title>{result.original_title ? result.original_title : result.original_name}</Title>
+                        <ILink href={`https://www.imdb.com/title/${result.imdb_id}`}>
+                            link
+                        </ILink>
                         <ItemContainer>
                             <Item>
                                 {result.release_date ? result.release_date.substring(0, 4) : result.first_air_date.substring(0, 4)}

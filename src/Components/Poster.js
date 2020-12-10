@@ -56,7 +56,7 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie = false }) => (
                     <span role="img" aria-label="rating">⭐</span>
                     {" "}
                     {rating}/10
-                    </Rating>
+                </Rating>
             </ImageContainer>
             <Title>{title.length > 15 ? `${title.substring(0,15)}...` : title}</Title>
             <Year>{year}</Year>
