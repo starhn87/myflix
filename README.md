@@ -28,4 +28,6 @@ Learning React and ES6 by building a Movie Discovery App using React Presenter P
 - [ ] /collections Route
 - [ ] On TV Show, show seasons and creators
 
+## Preview:
 
+Try it on [netlify](https://thirsty-newton-74e058.netlify.app/)
