@@ -73,7 +73,9 @@ const Overview = styled.p`
 `;
 
 const ILink = styled.a`
-
+    &:hover {
+        text-decoration: underline;
+    }
 `;
 
 const DetailPresenter = ({
@@ -114,7 +116,7 @@ const DetailPresenter = ({
                             </Item>
                             <Divider>•</Divider>
                             <Item>
-                                {result.genres && result.genres.map((genre, index) => index === result.genres.length - 1 ? genre.name : `${genre.name} /`)}
+                                {result.genres && result.genres.map((genre, index) => index === result.genres.length - 1 ? genre.name : `${genre.name} / `)}
                             </Item>
                         </ItemContainer>
                         <Overview>{result.overview}</Overview>

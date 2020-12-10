@@ -31,9 +31,9 @@ const SearchPresenter = ({
     handleSubmit,
     updateTerm
 }) => <Container>
-    <Helmet>
-        <title>Search | Nomflix</title>
-    </Helmet>
+        <Helmet>
+            <title>Search | Nomflix</title>
+        </Helmet>
         <Form onSubmit={handleSubmit}>
             <Input placeholder="Seach Movies or TV Shows..." value={searchTerm} onChange={updateTerm}>
             </Input>

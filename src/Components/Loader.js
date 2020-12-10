@@ -10,7 +10,7 @@ const Container = styled.div`
     justify-content: center;
 `;
 
-export default () => 
+export default () =>
     <Container>
         <span role="img" aria-label="Loading">
             ⏰
