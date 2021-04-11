@@ -5,6 +5,7 @@ import DetailPresenter from "./DetailPresenter";
 export default class extends React.Component {
     constructor(props) {
         super(props);
+        console.log(props);
         const { location: { pathname } } = props;
         this.state = {
             result: null,
