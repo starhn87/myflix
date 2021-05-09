@@ -67,7 +67,7 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-    width: 50%;
+    width: 70%;
     line-height: 1.5;
     font-size: 12px;
     opacity: 0.7;
@@ -90,6 +90,8 @@ const Img = styled.img`
 
 const Iframe = styled.iframe`
     margin-top: 30px;
+    width: 70%;
+    height: 60%;
 `;
 
 const DetailPresenter = ({
@@ -135,13 +137,11 @@ const DetailPresenter = ({
                         </ItemContainer>
                         <Overview>{result.overview}</Overview>
                         {!result.video && result.videos.results && result.videos.results.length > 0 &&
-                            result.videos.results.map((video) => {
+                            result.videos.results.filter((video, index) => index === 0).map(video => {
                                 return (
                                     <Iframe
                                         key={video.key}
                                         src={`https://www.youtube.com/embed/${video.key}`}
-                                        width={853}
-                                        height={480}
                                         frameBorder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
