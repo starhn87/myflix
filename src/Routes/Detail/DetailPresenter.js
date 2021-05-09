@@ -46,7 +46,7 @@ const Cover = styled.div`
 
 const Data = styled.div`
     width: 70%;
-    margin-left: 10px;
+    margin-left: 15px;
 `;
 
 const Title = styled.h3`
@@ -78,22 +78,26 @@ const ILink = styled.a`
     }
 `;
 
+const Iframe = styled.iframe`
+    margin-top: 30px;
+`;
+
 const DetailPresenter = ({
     result,
     loading,
     error
 }) => (
-        loading ? (
-            <>
-                <Helmet>
-                    <title>Loading | Nomflix</title>
-                </Helmet>
-                <Loader />
-            </>
-        ) : (
-            error ? (
+    loading ? (
+        <>
+            <Helmet>
+                <title>Loading | Nomflix</title>
+            </Helmet>
+            <Loader />
+        </>
+    ) : (
+        error ? (
             <Message color="#e74c3c" text={error}></Message>
-            ) : (
+        ) : (
             <Container>
                 <Helmet>
                     <title>{result.original_title ? result.original_title : result.original_name} | Nomflix</title>
@@ -120,10 +124,25 @@ const DetailPresenter = ({
                             </Item>
                         </ItemContainer>
                         <Overview>{result.overview}</Overview>
+                        {!result.video && result.videos.results &&
+                            result.videos.results.map(video => {
+                                return (
+                                    <Iframe
+                                        src={`https://www.youtube.com/embed/${video.key}`}
+                                        width={853}
+                                        height={480}
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                        title="Embedded youtube official trailer">
+                                    </Iframe>
+                                )
+                            })
+                        }
                     </Data>
                 </Content>
             </Container>
-    )));
+        )));
 
 DetailPresenter.propTypes = {
     result: PropTypes.object,
