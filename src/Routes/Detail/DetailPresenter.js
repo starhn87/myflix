@@ -5,6 +5,7 @@ import Loader from "../../Components/Loader";
 import Message from "../../Components/Message";
 import Helmet from "react-helmet";
 import { Link } from "react-router-dom";
+import imdb from "../../assets/imdb.png";
 
 const Container = styled.div`
     position: relative;
@@ -73,9 +74,18 @@ const Overview = styled.p`
 `;
 
 const ILink = styled.a`
+    margin-left: 20px;
+    width: 100px;
+    height: 10px;
     &:hover {
         text-decoration: underline;
     }
+`;
+
+const Img = styled.img`
+    width: 33px;
+    height: 17px;
+    vertical-align: -4px;
 `;
 
 const Iframe = styled.iframe`
@@ -107,9 +117,6 @@ const DetailPresenter = ({
                     <Cover bgImage={result.poster_path ? `https://image.tmdb.org/t/p/original${result.poster_path}` : require("../../assets/noPosterSmall.png")} />
                     <Data>
                         <Title>{result.original_title ? result.original_title : result.original_name}</Title>
-                        <ILink href={`https://www.imdb.com/title/${result.imdb_id}`}>
-                            link
-                        </ILink>
                         <ItemContainer>
                             <Item>
                                 {result.release_date ? result.release_date.substring(0, 4) : result.first_air_date.substring(0, 4)}
@@ -122,12 +129,16 @@ const DetailPresenter = ({
                             <Item>
                                 {result.genres && result.genres.map((genre, index) => index === result.genres.length - 1 ? genre.name : `${genre.name} / `)}
                             </Item>
+                            <ILink target="_blank" href={`https://www.imdb.com/title/${result.imdb_id}`}>
+                                <Img src={imdb}></Img>
+                            </ILink>
                         </ItemContainer>
                         <Overview>{result.overview}</Overview>
-                        {!result.video && result.videos.results &&
-                            result.videos.results.map(video => {
+                        {!result.video && result.videos.results && result.videos.results.length > 0 &&
+                            result.videos.results.map((video) => {
                                 return (
                                     <Iframe
+                                        key={video.key}
                                         src={`https://www.youtube.com/embed/${video.key}`}
                                         width={853}
                                         height={480}
