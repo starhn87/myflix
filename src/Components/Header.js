@@ -38,35 +38,15 @@ const SLink = styled(Link)`
 export default withRouter(({ location: { pathname } }) => (
 	<Header>
 		<List>
-			<Item current={pathname === "/"}>
+			<Item current={pathname === "/" || pathname.includes("/movie")}>
 				<SLink to="/">Movies</SLink>
 			</Item>
-			<Item current={pathname === "/tv"}>
+			<Item current={pathname === "/tv" || pathname.includes("/show")}>
 				<SLink to="/tv">TV</SLink>
 			</Item>
-			<Item current={pathname === "/search"}>
+			<Item current={pathname.includes("/search")}>
 				<SLink to="/search">Search</SLink>
 			</Item>
 		</List>
 	</Header>
 ));
-
-// 위의 것과 같은 기능을 한다
-// const HeaderC = (props) => (
-// 	<Header>
-// 		{console.log(props)}
-// 		<List>
-// 			<Item current={true}>
-// 				<SLink to="/">Movies</SLink>
-// 			</Item>
-// 			<Item current={true}>
-// 				<SLink to="/tv">TV</SLink>
-// 			</Item>
-// 			<Item current={true}>
-// 				<SLink to="/search">Search</SLink>
-// 			</Item>
-// 		</List>
-// 	</Header>
-// );
-
-// export default withRouter(HeaderC);
