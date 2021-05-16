@@ -102,7 +102,7 @@ const DetailPresenter = ({
     loading ? (
         <>
             <Helmet>
-                <title>Loading | Nomflix</title>
+                <title>Loading | Jimmyflix</title>
             </Helmet>
             <Loader />
         </>
@@ -112,7 +112,7 @@ const DetailPresenter = ({
         ) : (
             <Container>
                 <Helmet>
-                    <title>{result.original_title ? result.original_title : result.original_name} | Nomflix</title>
+                    <title>{result.original_title ? result.original_title : result.original_name} | Jimmyflix</title>
                 </Helmet>
                 <Backdrop bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`} />
                 <Content>
