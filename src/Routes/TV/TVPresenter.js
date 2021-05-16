@@ -21,7 +21,7 @@ const TVPresenter = ({
 }) => (
     <>
         <Helmet>
-            <title>TV Shows | Nomflix</title>
+            <title>TV Shows | Jimmyflix</title>
         </Helmet>
         {
             loading ? <Loader /> : (
